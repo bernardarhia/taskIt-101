@@ -1,0 +1,14 @@
+.header{
+    width: 100%;
+    background: #fff;
+    padding: 1.4rem;
+   &-wrapper{
+    @extend %flex-sb;
+    width: 60%;
+    margin: 0 auto;
+    .header-search__bar{
+        flex: 1;
+        margin-right: 1rem;
+    }
+   }
+}

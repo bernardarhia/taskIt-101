@@ -1,0 +1,20 @@
+%flex-c{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+%flex-sb{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-content: center;
+}
+
+%p-center{
+    display: grid;
+    place-items: center;
+}
+%auto{
+    margin: 0 auto;
+}

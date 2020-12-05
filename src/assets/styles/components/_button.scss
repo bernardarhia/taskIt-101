@@ -1,0 +1,27 @@
+.btn{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    // padding:.5rem;
+    margin: 1.2rem 0;
+    font-size: .9rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn__normal{
+    width: auto;
+}
+
+.btn__small{
+    padding: .8rem 2.5rem;
+}
+.rounded{
+    width: 45px;
+    height: 45px;
+}
+.blue{
+    background: blue;
+}
