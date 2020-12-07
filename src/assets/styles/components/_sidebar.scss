@@ -33,3 +33,34 @@
         cursor: pointer;
     }
 }
+
+@media (max-width:970px){
+    .sidebar{
+        position: relative;
+        display:flex;
+        padding: 1rem .5rem;
+        border: 1.9px solid #333;
+    
+        .lists{
+            padding: .5rem;
+            display: block;
+            .icon{
+                display: flex;
+                flex-direction: row;
+                position: absolute;
+                a{
+                   padding: 1rem;
+                }
+            }
+        }
+        .icons{
+            padding: .5rem;
+            cursor: pointer;
+            border: 1px solid red;
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+    }
+
+

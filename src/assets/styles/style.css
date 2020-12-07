@@ -21,6 +21,7 @@ body, html {
   transition: 0.2s ease-out;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 2rem;
 }
 
 .container {
@@ -37,6 +38,20 @@ input {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
+.my-custom-input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  border: 1px solid #e0e7ed;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+@media (max-width: 970px) {
+  .wrapper {
+    display: block;
+  }
+}
 .header-wrapper {
   display: flex;
   align-items: center;
@@ -78,6 +93,33 @@ input {
   cursor: pointer;
 }
 
+@media (max-width: 970px) {
+  .sidebar {
+    position: relative;
+    display: flex;
+    padding: 1rem 0.5rem;
+    border: 1.9px solid #333;
+  }
+  .sidebar .lists {
+    padding: 0.5rem;
+    display: block;
+  }
+  .sidebar .lists .icon {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+  }
+  .sidebar .lists .icon a {
+    padding: 1rem;
+  }
+  .sidebar .icons {
+    padding: 0.5rem;
+    cursor: pointer;
+    border: 1px solid red;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
 .main-content {
   flex: 1;
   padding: 2rem;
@@ -119,7 +161,7 @@ input {
 }
 
 .btn__small {
-  padding: 0.8rem 2.5rem;
+  padding: 1rem 2.5rem;
 }
 
 .rounded {
@@ -129,6 +171,114 @@ input {
 
 .blue {
   background: blue;
+}
+
+.task-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 66;
+  overflow: hidden;
+  transition: 0.4s ease-out;
+}
+.task-form label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0.6rem 0;
+}
+.task-form .form {
+  visibility: hidden;
+  width: 30rem;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.07);
+  transition: 0.4s ease-out;
+  animation: drop 0.6s ease-out forwards;
+}
+.task-form .form .close-form {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+.task-form .form form .tags-element {
+  display: flex;
+  flex-wrap: wrap;
+}
+.task-form .form form .tags-element p {
+  display: flex;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0.7rem 0;
+  padding: 0.4rem 1rem;
+  margin-right: 0.4rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+}
+.task-form .form form .tags-element p span {
+  display: grid;
+  place-items: center;
+}
+.task-form .form form .tags-element p .close {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 0 1rem;
+  cursor: pointer;
+}
+.task-form .form form .dates {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-form .form form .submit {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@keyframes drop {
+  0% {
+    transform: translate3d(0, -100%, 0);
+    visibility: hidden;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+}
+@media (max-width: 500px) {
+  .task-form .form {
+    width: 90%;
+  }
+  .task-form .form form .dates {
+    display: block;
+  }
+  .task-form .form form .submit {
+    display: block;
+  }
+}
+.right_sidebar {
+  margin: 8rem 0 0 0;
+  padding: 0 2rem;
+}
+.right_sidebar .Calendar {
+  background: none !important;
+  border: 1px solid #333;
+}
+.right_sidebar .Calendar .Calendar__section {
+  color: none !important;
+}
+.right_sidebar .Calendar .Calendar__day {
+  color: none !important;
+}
+
+@media (max-width: 500px) {
+  .right_sidebar .Calendar {
+    width: 98% !important;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

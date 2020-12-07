@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-// import "react-modern-calendar-datepicker/lib/DatePicker.css";
-// import { Calendar } from "react-modern-calendar-datepicker";
+
 import TaskContextProvider from "./context/TaskContext";
 import ThemeContext from "./context/ThemeContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -14,10 +13,6 @@ const App = () => {
     <ThemeContext>
       <TaskContextProvider>
         <>
-              {/* <Calendar
-        value={selectedDay}
-        onChange={setSelectedDay}
-      /> */}
           <Router>
             <Switch>
             <Route path='/' exact component={Home} />

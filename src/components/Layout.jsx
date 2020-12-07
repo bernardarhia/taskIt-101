@@ -7,8 +7,8 @@ const Layout = ({ children }) => {
     <div
       className="wrapper"
       style={{
-        backgroundColor: theme === "light" ? "" : "#222",
-        color: theme === "light" ? "#000" : "#fff",
+        backgroundColor: theme === "light" ? "" : "#2c2c2c",
+        color: theme === "light" ? "#383c47" : "#fff",
       }}
     >
       {children}

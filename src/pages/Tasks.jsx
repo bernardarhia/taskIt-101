@@ -2,17 +2,16 @@ import React, { useEffect } from "react";
 import Layout from "../components/Layout";
 import MainContent from "../components/major/MainContent";
 import Sidebar from "../components/major/Sidebar";
-import {
-  addItem,
-  addOne,
-  createTable,
-  deleteTable,
-  findTable,
-  deleteItem,
-  findItem,
-  updateItem,
-} from "../utils/query";
-import { v4 as uuidv4 } from "uuid"; // import {c}
+// import {
+//   addItem,
+//   addOne,
+//   createTable,
+//   deleteTable,
+//   findTable,
+//   deleteItem,
+//   findItem,
+//   updateItem,
+// } from "../utils/query";
 const Tasks = () => {
   useEffect(() => {
     // addOne("facebook", {
