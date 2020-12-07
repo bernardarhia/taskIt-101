@@ -7,4 +7,94 @@
         display: flex;
         justify-content: flex-end;
     }
+
+    .title-container{
+        border: 1px solid blue;
+        padding: 2rem;
+        display: grid;
+       grid-template-columns: repeat(3,1fr);
+       grid-template-rows: auto;
+       grid-gap: 1.4rem;
+        .task-title{
+            padding: 1rem 2rem;
+            margin: 1rem 0;
+            position:relative;
+            background: #fff;
+            justify-self: stretch;
+            border-radius: 5px;
+         .title-content{
+            @extend %flex-sb;
+            .head{
+                h2{
+                    color: #222;
+                    font-size: 1rem;
+                }
+            }
+
+            .dropdown{
+                position: relative;
+                .show{
+                    display: block;
+                }
+                &-menu{
+                    position: absolute; 
+                    top: 0px; 
+                    left: 0px;
+                    transform:translate3d(-20px,10px, 0);
+                     will-change: transform;
+                     background: #fff;
+                     margin: .5rem 0;
+                     border-radius: 10px;
+                     padding: 1rem;
+                     z-index: 2;
+                     display: none;
+                     a{
+                        padding: .5rem 1.3rem .5rem .5rem;
+                        @extend %flex-sb;
+                        span{
+                            display: block;
+                        }
+                    }
+                }
+            }
+         }
+            .display-tags{
+                display: flex;
+                padding: 1.6rem 0;
+                .tag-e{
+                    margin-right: 1rem;
+                    padding: .5rem 2rem;
+                    background: #333;
+                    color: #fff;
+                    font-size: 13px;
+                    font-weight:  500px;
+                    &:nth-child(1){
+                        background: #fff2ec;
+                        color: #fda173;
+                    }
+                    &:nth-child(2){
+                        background: #e6f7fb;
+                        color: #3ec0e0;
+                    }
+                }
+            }
+
+            .task-done{
+                width: 100%;
+                margin-bottom: 1rem;
+                .inner-line{
+                    height: 6px;
+                    background: #ccc;
+                    border-radius: 10px;
+                    .line{
+                        height: 100%;
+                        background: #4b74ff;
+                        border-radius: 10px;
+                    }
+                }
+            }
+        }
+
+
+    }
 }

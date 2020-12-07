@@ -13,7 +13,7 @@ const MainContent = ({children}) => {
         <div className='main-content'>
             <Container>
                 <div className="add-task__btn">
-                    <Button shape="rounded" onClick={showForm}><FiPlus /></Button>
+                    <Button shape="rounded" onClick={showForm} color="blue"><FiPlus /></Button>
                 </div>
                 {children}
             </Container>

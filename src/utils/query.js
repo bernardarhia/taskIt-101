@@ -22,6 +22,14 @@ const createTable = async (table) => {
   return;
 };
 
+const getTables = async()=>{
+  const database =
+  (await localForage.getItem(DATABASE)) ||
+  (await localForage.setItem(DATABASE, {}));
+
+  return Object.keys(database);
+}
+
 // delete a specific table
 const deleteTable = async (table) => {
   const database =
@@ -33,7 +41,7 @@ const deleteTable = async (table) => {
     ...database,
   });
   // returned 3 data because I will send them to the trash route
-  return { newData, oops, table };
+  return Object.keys(newData);
 };
 
 const findTable = async (table) => {
@@ -50,6 +58,7 @@ const addOne = async (table, data) => {
     (await localForage.getItem(DATABASE)) ||
     (await localForage.setItem(DATABASE, {}));
 
+    if(!table)return
   if (!data) return "Can't send an empty data";
   if (typeof data !== "object" || Array.isArray(data)) {
     return false;
@@ -126,6 +135,7 @@ export {
   deleteItem,
   findItem,
   updateItem,
+  getTables
 };
 
 /* 

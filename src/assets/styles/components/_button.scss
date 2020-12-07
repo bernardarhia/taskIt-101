@@ -12,7 +12,10 @@
 }
 
 .btn__normal{
-    width: auto;
+    width: 100%;
+    text-align: start;
+    border-radius: none !important;
+    padding: .6rem;
 }
 
 .btn__small{
@@ -24,4 +27,9 @@
 }
 .blue{
     background: blue;
+}
+
+.transparent{
+    color: #222;
+    background: #e7e7e7;
 }

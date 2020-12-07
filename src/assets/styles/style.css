@@ -25,7 +25,8 @@ body, html {
 }
 
 .container {
-  width: 80%;
+  width: 90%;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
@@ -43,7 +44,6 @@ input {
   padding: 0.5rem;
   font-size: 0.9rem;
   border-radius: 5px;
-  border: 1px solid #e0e7ed;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
@@ -52,7 +52,7 @@ input {
     display: block;
   }
 }
-.header-wrapper {
+.task-lists .list, .header-wrapper, .main-content .title-container .task-title .title-content .dropdown-menu a, .main-content .title-container .task-title .title-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -129,6 +129,85 @@ input {
   display: flex;
   justify-content: flex-end;
 }
+.main-content .title-container {
+  border: 1px solid blue;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 1.4rem;
+}
+.main-content .title-container .task-title {
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  position: relative;
+  background: #fff;
+  justify-self: stretch;
+  border-radius: 5px;
+}
+.main-content .title-container .task-title .title-content .head h2 {
+  color: #222;
+  font-size: 1rem;
+}
+.main-content .title-container .task-title .title-content .dropdown {
+  position: relative;
+}
+.main-content .title-container .task-title .title-content .dropdown .show {
+  display: block;
+}
+.main-content .title-container .task-title .title-content .dropdown-menu {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transform: translate3d(-20px, 10px, 0);
+  will-change: transform;
+  background: #fff;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  padding: 1rem;
+  z-index: 2;
+  display: none;
+}
+.main-content .title-container .task-title .title-content .dropdown-menu a {
+  padding: 0.5rem 1.3rem 0.5rem 0.5rem;
+}
+.main-content .title-container .task-title .title-content .dropdown-menu a span {
+  display: block;
+}
+.main-content .title-container .task-title .display-tags {
+  display: flex;
+  padding: 1.6rem 0;
+}
+.main-content .title-container .task-title .display-tags .tag-e {
+  margin-right: 1rem;
+  padding: 0.5rem 2rem;
+  background: #333;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500px;
+}
+.main-content .title-container .task-title .display-tags .tag-e:nth-child(1) {
+  background: #fff2ec;
+  color: #fda173;
+}
+.main-content .title-container .task-title .display-tags .tag-e:nth-child(2) {
+  background: #e6f7fb;
+  color: #3ec0e0;
+}
+.main-content .title-container .task-title .task-done {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.main-content .title-container .task-title .task-done .inner-line {
+  height: 6px;
+  background: #ccc;
+  border-radius: 10px;
+}
+.main-content .title-container .task-title .task-done .inner-line .line {
+  height: 100%;
+  background: #4b74ff;
+  border-radius: 10px;
+}
 
 .header {
   width: 100%;
@@ -157,7 +236,10 @@ input {
 }
 
 .btn__normal {
-  width: auto;
+  width: 100%;
+  text-align: start;
+  border-radius: none !important;
+  padding: 0.6rem;
 }
 
 .btn__small {
@@ -171,6 +253,11 @@ input {
 
 .blue {
   background: blue;
+}
+
+.transparent {
+  color: #222;
+  background: #e7e7e7;
 }
 
 .task-form {
@@ -260,25 +347,39 @@ input {
     display: block;
   }
 }
-.right_sidebar {
-  margin: 8rem 0 0 0;
-  padding: 0 2rem;
+.task-lists {
+  border: 1px solid red;
+  margin: 3rem 0;
 }
-.right_sidebar .Calendar {
-  background: none !important;
-  border: 1px solid #333;
+.task-lists .list {
+  margin: 1.5rem 0;
+  border: 1px solid blue;
+  padding: 1.4rem;
+  background: #fff;
 }
-.right_sidebar .Calendar .Calendar__section {
-  color: none !important;
+.task-lists .list .title-info {
+  display: flex;
 }
-.right_sidebar .Calendar .Calendar__day {
-  color: none !important;
+.task-lists .list .title-info .check {
+  padding-right: 1rem;
 }
-
-@media (max-width: 500px) {
-  .right_sidebar .Calendar {
-    width: 98% !important;
-  }
+.task-lists .list .title-info .check input {
+  width: auto;
+}
+.task-lists .list .priority, .task-lists .list .time {
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+}
+.task-lists .list .priority .text, .task-lists .list .time .text {
+  padding-left: 1rem;
+}
+.task-lists .list .stage button {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

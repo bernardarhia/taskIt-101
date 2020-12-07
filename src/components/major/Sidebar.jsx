@@ -24,7 +24,7 @@ const Sidebar = () => {
         <div className="icon">
           {[
             { icon: <FiGrid />, route: "/" },
-            { icon: <FiFolder />, route: "/tasks" },
+            { icon: <FiFolder />, route: "/task_manager" },
             { icon: <FiCalendar />, route: "/calendar" },
             { icon: <FiTrash />, route: "/trash" },
           ].map((i, index) => {
