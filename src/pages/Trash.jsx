@@ -1,16 +1,29 @@
-import React from 'react'
-import Layout from '../components/Layout';
-import Container from '../components/major/Container';
-import Sidebar from '../components/major/Sidebar';
+import React, { useContext, useEffect } from "react";
+import Layout from "../components/Layout";
+import Container from "../components/major/Container";
+import Sidebar from "../components/major/Sidebar";
+import TaskTitle from "../components/major/TaskTitle";
+import { TaskListContext } from "../context/TaskContext";
+import MainContent from '../components/major/MainContent';
 const Trash = () => {
-    return (
-        <Layout>
-            <Sidebar />
-            <Container>
-                This is the trash page
-            </Container>
-        </Layout>
-    )
-}
+  const { trashItems, setTrashItems } = useContext(TaskListContext);
 
-export default Trash
+  useEffect(() => {
+    
+  }, [trashItems, setTrashItems]);
+  return (
+    <Layout>
+      <Sidebar />
+      <MainContent>
+
+      <Container>
+     <div className="title-container">
+     <TaskTitle title={trashItems} isInTrash />
+     </div>
+      </Container>
+      </MainContent>
+    </Layout>
+  );
+};
+
+export default Trash;

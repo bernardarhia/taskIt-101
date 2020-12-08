@@ -83,6 +83,13 @@ const addItem = async (table, item) => {
   }
   const tableData = database[table];
   const tableItemData = database[table].item;
+  if(!tableItemData) {
+    return await localForage.setItem(DATABASE, {
+      ...database,
+      [table]: { ...tableData, item: [...item] },
+    });
+  
+  }
   const newData = await localForage.setItem(DATABASE, {
     ...database,
     [table]: { ...tableData, item: [...tableItemData, item] },
@@ -121,12 +128,24 @@ const findItem = async (table, id) => {
 };
 
 // update a single Item
-const updateItem = async (table, id, data) => {
+const updateItem = async (table, id) => {
   const database =
     (await localForage.getItem(DATABASE)) ||
     (await localForage.setItem(DATABASE, {}));
 
-  
+  const data = database[table];
+
+  const checked = data.item.map((i)=>{
+   if(i.id === id){
+     return {...i, isCompleted : !i.isCompleted};
+   }
+   return i
+  })
+      await localForage.setItem(DATABASE, {
+      ...database,
+      [table]: { ...data, item: [...checked] },
+    });
+    return checked
 };
 
 const getAllItems = async (table)=>{

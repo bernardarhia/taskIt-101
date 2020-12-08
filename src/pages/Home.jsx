@@ -17,6 +17,7 @@ const Home = () => {
             try{
                 const response = await getTables();
                 if(response)setTaskTitles([...response])
+                console.log(response);
             }catch(err){
                 console.log(err);
             }

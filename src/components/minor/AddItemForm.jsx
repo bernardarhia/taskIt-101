@@ -22,8 +22,8 @@ const {setAllItems,AllItems} = useContext(TaskListContext)
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [item, setItem] = useState({
-    id: uuidv4(),
-    isCompleted: true,
+    id: '',
+    isCompleted: false,
     text: "",
   });
   const handleItemSubmit = async () => {
@@ -32,7 +32,7 @@ const {setAllItems,AllItems} = useContext(TaskListContext)
         setError('Fill all inputs form')
         return;
     }
-    setItem({ ...item, text: itemTitle, priority, date, duration });
+    setItem({ ...item, id:uuidv4(),text: itemTitle, priority, date, duration });
   
    
   };
@@ -52,21 +52,31 @@ const {setAllItems,AllItems} = useContext(TaskListContext)
         if(!date || !duration || !itemTitle || !priority){
             return;
         }
-         const itemSent = await addItem(table, item);
-         if(itemSent){
-               setError('')
-    setDuration('')
-    setItemTitle('')
-    setSuccess('Item added');
-    setPriority('')
-    setDate()
+        try{
 
-    setTimeout(()=>{
-        setAllItems([...itemSent]);
-        setSuccess('')
-        setShowForm(!showForm)
-    },2000)
-         }
+          const itemSent = await addItem(table, item);
+          if(itemSent){
+                setError('')
+     setDuration('')
+     setItemTitle('')
+     setSuccess('Item added');
+     setPriority('')
+     setDate()
+ 
+     setTimeout(()=>{
+         setAllItems([...itemSent]);
+         setSuccess('')
+         setShowForm(!showForm)
+         setItem({
+           id:'',
+           isCompleted:false,
+           text:''
+         })
+     },1000)
+          }
+        }catch(e){
+          console.log(e.message);
+        }
      }
      sendItem()
     async function getAll(){

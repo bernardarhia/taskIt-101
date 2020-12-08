@@ -1,5 +1,6 @@
 .main-content{
     flex: 1;
+    margin-left: 1rem;
     .add-task__btn{
         display: flex;
         justify-content: flex-end;
@@ -89,5 +90,66 @@
         }
 
 
+    }
+}
+
+
+@media (max-width:960px){
+    .main-content{
+        .title-container{
+            padding: 2rem;
+           grid-template-columns: repeat(2,1fr);
+        }
+    }
+}
+@media (max-width:690px){
+    .main-content{
+        flex: 1;
+        .title-container{
+          display: block;
+        }
+    }
+}
+
+@media (max-width:460px){
+    .main-content{
+        margin-left: 0;
+        flex: 1;
+        .title-container{
+            .task-title{
+                .display-tags{
+                    display: block;
+                    .tag-e{
+                       margin: 1rem 0;
+                    }
+                }
+             
+        }
+        }
+    }
+}
+
+@media (max-width:360px){
+    .main-content{
+        margin-left: 0;
+        flex: 1;
+        .title-container{
+            .task-title{
+                .title-content{
+                    .head{
+                        h2{
+                            font-size: .8rem;
+                        }
+                    }
+                }
+                .display-tags{
+                    display: block;
+                    .tag-e{
+                      font-size: 12px;
+                      text-align: center;
+                    }
+                }
+        }
+        }
     }
 }

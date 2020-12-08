@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import TaskContextProvider from "./context/TaskContext";
 import ThemeContext from "./context/ThemeContext";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./pages/Home";
 import Trash from "./pages/Trash";
 import Calendar from "./pages/Calender";
@@ -21,6 +21,7 @@ const App = () => {
             <Route path='/tasks/:name' exact component={Tasks} />
             <Route path='/task_manager' exact component={TaskManager} />
             <Route path='/calendar' exact component={Calendar} />
+            <Redirect path="*" exact to="/"/>
             </Switch>
           </Router>
         </>

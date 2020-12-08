@@ -17,7 +17,7 @@ body, html {
 }
 
 .wrapper {
-  height: 100vh;
+  min-height: 100vh;
   transition: 0.2s ease-out;
   display: flex;
   justify-content: space-between;
@@ -36,14 +36,6 @@ input {
   font-size: 1rem;
   border-radius: 5px;
   border: 1px solid #e0e7ed;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-}
-
-.my-custom-input {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 0.9rem;
-  border-radius: 5px;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
@@ -134,13 +126,13 @@ input {
   .sidebar .icons {
     padding: 0.5rem;
     cursor: pointer;
-    border: 1px solid red;
     display: flex;
     justify-content: flex-end;
   }
 }
 .main-content {
   flex: 1;
+  margin-left: 1rem;
 }
 .main-content .add-task__btn {
   display: flex;
@@ -222,6 +214,48 @@ input {
   border-radius: 10px;
 }
 
+@media (max-width: 960px) {
+  .main-content .title-container {
+    padding: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 690px) {
+  .main-content {
+    flex: 1;
+  }
+  .main-content .title-container {
+    display: block;
+  }
+}
+@media (max-width: 460px) {
+  .main-content {
+    margin-left: 0;
+    flex: 1;
+  }
+  .main-content .title-container .task-title .display-tags {
+    display: block;
+  }
+  .main-content .title-container .task-title .display-tags .tag-e {
+    margin: 1rem 0;
+  }
+}
+@media (max-width: 360px) {
+  .main-content {
+    margin-left: 0;
+    flex: 1;
+  }
+  .main-content .title-container .task-title .title-content .head h2 {
+    font-size: 0.8rem;
+  }
+  .main-content .title-container .task-title .display-tags {
+    display: block;
+  }
+  .main-content .title-container .task-title .display-tags .tag-e {
+    font-size: 12px;
+    text-align: center;
+  }
+}
 .header {
   width: 100%;
   background: #fff;
@@ -270,8 +304,11 @@ input {
 }
 
 .transparent {
-  color: #222;
-  background: #e7e7e7;
+  display: flex;
+  align-items: center;
+}
+.transparent svg {
+  margin-right: 0.6rem;
 }
 
 .task-form {
@@ -362,12 +399,14 @@ input {
 }
 .task-lists {
   margin: 3rem 0;
+  padding: 2rem;
 }
 .task-lists .list {
   margin: 1.5rem 0;
   padding: 0.7rem;
   background: #fff;
   border-radius: 5px;
+  box-shadow: 0 0 15px #c8c8c84a;
 }
 .task-lists .list .title-info {
   display: flex;
@@ -382,7 +421,7 @@ input {
 }
 .task-lists .list .priority, .task-lists .list .time {
   display: flex;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   flex: 1;
 }
