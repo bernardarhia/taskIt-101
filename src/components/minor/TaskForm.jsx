@@ -1,12 +1,15 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Input } from "@chakra-ui/react";
+import {Input } from "@chakra-ui/react";
 import { FiX } from "react-icons/fi";
 import { TaskListContext } from "../../context/TaskContext";
 import Button from "../major/Button";
 import Tags from "./Tags";
 import { v4 as uuidv4 } from "uuid";
 import { addOne } from "../../utils/query";
+import Alert from '../major/Alert';
 const TaskForm = () => {
+  const { setTaskTitles } = useContext(TaskListContext);
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   // show form or hide form
@@ -18,7 +21,7 @@ const TaskForm = () => {
   // tags
   const [disableTag, setDisableTags] = useState(false);
   const [inputTags, setInputTags] = useState([]);
-  const [singleTagValue, setSingleTagValue] = useState("");
+  const [, setSingleTagValue] = useState("");
 
   const [task, setTask] = useState({
     id: uuidv4(),
@@ -37,14 +40,12 @@ const TaskForm = () => {
 
     // send data into database
     try {
-      const response = await addOne(taskTitle, {
+      const response = await addOne(taskTitle.trim(), {
         ...task,
         tags: [...inputTags],
       });
       setError("");
       setSuccess("Success");
-
-      
 
       setTask({
         id: uuidv4(),
@@ -54,9 +55,10 @@ const TaskForm = () => {
       });
 
       setTimeout(() => {
+        setTaskTitles([...response]);
         setTaskTitle("");
-      setInputTags([]);
-      setSingleTagValue("");
+        setInputTags([]);
+        setSingleTagValue("");
         setSuccess("");
         setShowInput(false);
       }, 1500);
@@ -96,8 +98,8 @@ const TaskForm = () => {
           }}
         >
           <div className="form">
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {success && <p className="success">{success}</p>}
+           {error && <Alert type="error" text={error} />}
+           {success && <Alert type="success" text={success} />}
             <div className="close-form">
               <FiX onClick={() => setShowInput(false)} />
             </div>
@@ -126,7 +128,7 @@ const TaskForm = () => {
               </div>
             </div>
             <div className="submit">
-              <Button size="btn__small" onClick={handleTaskSubmit}>
+              <Button size="btn__small" color="blue" onClick={handleTaskSubmit}>
                 Add Task
               </Button>
             </div>

@@ -1,14 +1,16 @@
-import React,{useState, useEffect} from 'react'
+import { Alert, AlertIcon, CloseButton } from '@chakra-ui/react'
+import React,{useState, useEffect, useContext} from 'react'
 import Layout from '../components/Layout'
 import MainContent from '../components/major/MainContent'
 import Sidebar from '../components/major/Sidebar'
 import TaskTitle from '../components/major/TaskTitle'
 import TaskForm from '../components/minor/TaskForm'
+import { TaskListContext } from '../context/TaskContext'
 import { getTables } from '../utils/query'
 // import 
 const Home = () => {
 
-    const [tasksTitles, setTaskTitles] = useState([]);
+    const {tasksTitles, setTaskTitles} = useContext(TaskListContext);
 
     useEffect(()=>{
         const fetchTables = async ()=>{
@@ -20,13 +22,13 @@ const Home = () => {
             }
         }
         fetchTables()
-    },[])
+    },[setTaskTitles]);
     return (
         <>
         <TaskForm />
          <Layout>
               <Sidebar />
-              <MainContent>
+              <MainContent containBtn>
                   <div className="title-container">
                   {tasksTitles && tasksTitles.map((title, index)=><TaskTitle title={title} setTaskTitles={setTaskTitles} key={index} />)}
                   {tasksTitles.length === 0 && <h1>No Tasks</h1>}

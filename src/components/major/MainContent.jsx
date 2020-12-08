@@ -4,7 +4,7 @@ import React,{useState, useEffect, useContext} from 'react'
 import Button from './Button';
 import { FiPlus } from 'react-icons/fi';
 import { TaskListContext } from '../../context/TaskContext';
-const MainContent = ({children}) => {
+const MainContent = ({children, containBtn}) => {
     const {showInput, setShowInput} = useContext(TaskListContext)
     const showForm = ()=>{
         setShowInput(true)
@@ -12,9 +12,11 @@ const MainContent = ({children}) => {
     return (
         <div className='main-content'>
             <Container>
-                <div className="add-task__btn">
+               
+                {containBtn && <div className="add-task__btn">
                     <Button shape="rounded" onClick={showForm} color="blue"><FiPlus /></Button>
-                </div>
+                </div>}
+               
                 {children}
             </Container>
         </div>

@@ -47,12 +47,31 @@ input {
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
+.error, .success {
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  padding: 1rem;
+  background: #ccc;
+  margin-bottom: 1rem;
+}
+
+.error {
+  color: #ff2f2f;
+  background: #ff000012;
+}
+
+.success {
+  color: #2ca02c;
+  background: #00ff1112;
+}
+
 @media (max-width: 970px) {
   .wrapper {
     display: block;
   }
 }
-.task-lists .list, .header-wrapper, .main-content .title-container .task-title .title-content .dropdown-menu a, .main-content .title-container .task-title .title-content {
+.task-lists .list, .header-wrapper, .main-content .title-container .task-title .title-content .dropdown-menu a, .main-content .title-container .task-title .title-content, .error, .success {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -122,15 +141,12 @@ input {
 }
 .main-content {
   flex: 1;
-  padding: 2rem;
 }
 .main-content .add-task__btn {
-  border: 1px solid red;
   display: flex;
   justify-content: flex-end;
 }
 .main-content .title-container {
-  border: 1px solid blue;
   padding: 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -141,12 +157,10 @@ input {
   padding: 1rem 2rem;
   margin: 1rem 0;
   position: relative;
-  background: #fff;
   justify-self: stretch;
   border-radius: 5px;
 }
 .main-content .title-container .task-title .title-content .head h2 {
-  color: #222;
   font-size: 1rem;
 }
 .main-content .title-container .task-title .title-content .dropdown {
@@ -161,7 +175,6 @@ input {
   left: 0px;
   transform: translate3d(-20px, 10px, 0);
   will-change: transform;
-  background: #fff;
   margin: 0.5rem 0;
   border-radius: 10px;
   padding: 1rem;
@@ -184,7 +197,7 @@ input {
   background: #333;
   color: #fff;
   font-size: 13px;
-  font-weight: 500px;
+  font-weight: bold;
 }
 .main-content .title-container .task-title .display-tags .tag-e:nth-child(1) {
   background: #fff2ec;
@@ -244,6 +257,7 @@ input {
 
 .btn__small {
   padding: 1rem 2.5rem;
+  text-align: center;
 }
 
 .rounded {
@@ -293,11 +307,10 @@ input {
   justify-content: flex-end;
   cursor: pointer;
 }
-.task-form .form form .tags-element {
+.task-form .form .tags-element {
   display: flex;
-  flex-wrap: wrap;
 }
-.task-form .form form .tags-element p {
+.task-form .form .tags-element p {
   display: flex;
   font-size: 13px;
   font-weight: 500;
@@ -306,22 +319,22 @@ input {
   margin-right: 0.4rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
 }
-.task-form .form form .tags-element p span {
+.task-form .form .tags-element p span {
   display: grid;
   place-items: center;
 }
-.task-form .form form .tags-element p .close {
+.task-form .form .tags-element p .close {
   display: flex;
   justify-content: flex-end;
   margin: 0 0 0 1rem;
   cursor: pointer;
 }
-.task-form .form form .dates {
+.task-form .form .dates {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.task-form .form form .submit {
+.task-form .form .submit {
   display: flex;
   justify-content: flex-end;
 }
@@ -348,20 +361,21 @@ input {
   }
 }
 .task-lists {
-  border: 1px solid red;
   margin: 3rem 0;
 }
 .task-lists .list {
   margin: 1.5rem 0;
-  border: 1px solid blue;
-  padding: 1.4rem;
+  padding: 0.7rem;
   background: #fff;
+  border-radius: 5px;
 }
 .task-lists .list .title-info {
   display: flex;
+  flex: 1;
 }
 .task-lists .list .title-info .check {
   padding-right: 1rem;
+  position: relative;
 }
 .task-lists .list .title-info .check input {
   width: auto;
@@ -370,9 +384,25 @@ input {
   display: flex;
   font-size: 14px;
   font-weight: 600;
+  flex: 1;
 }
 .task-lists .list .priority .text, .task-lists .list .time .text {
   padding-left: 1rem;
+}
+.task-lists .list .title {
+  display: flex;
+}
+.task-lists .list .title span {
+  display: block;
+}
+.task-lists .list .title span:nth-child(1) {
+  margin-top: 0.09rem;
+  margin-right: 0.4rem;
+}
+.task-lists .list .stage {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 .task-lists .list .stage button {
   display: block;
@@ -380,6 +410,54 @@ input {
   border: none;
   outline: none;
   border-radius: 20px;
+  margin-right: 0.4rem;
+}
+
+.item-form__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #00000099;
+  z-index: 2;
+}
+.item-form__container label {
+  display: block;
+  margin: 0.6rem 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+.item-form__container select {
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  border: 1px solid #e0e7ed;
+  -moz-appearance: none;
+  /* Firefox */
+  -webkit-appearance: none;
+  /* Safari and Chrome */
+  appearance: none;
+}
+.item-form__container .item-form {
+  visibility: hidden;
+  width: 30rem;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.07);
+  transition: 0.4s ease-out;
+  animation: drop 0.6s ease-out forwards;
+}
+.item-form__container .item-form .close {
+  display: flex;
+  justify-content: flex-end;
+}
+.item-form__container .item-form .priority {
+  width: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */

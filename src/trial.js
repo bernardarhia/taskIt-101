@@ -1,15 +1,7 @@
-const arr = [
-  { name: "Ben", age: 14, id: 1 },
-  { name: "Ben", age: 14, id: 2 },
-  { name: "Ben", age: 14, id: 3 },
-  { name: "Ben", age: 14, id: 4 },
-];
+const a = 3;
 
-const newItem = arr.map(i =>{
-    if(i.id === 2){
-        return {...i, age:3}
-    }else{
-        return i
-    }
-})
-console.log(newItem);
+
+const result = a === 4 ? 'yes' : a === 2 ? 'no':'somehow';
+
+console.log(result);
+

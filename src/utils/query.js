@@ -68,7 +68,7 @@ const addOne = async (table, data) => {
     [table]: { ...data, item: [] },
   });
 
-  return newData;
+  return Object.keys(newData)
 };
 
 // add data to table items
@@ -88,7 +88,7 @@ const addItem = async (table, item) => {
     [table]: { ...tableData, item: [...tableItemData, item] },
   });
 
-  return newData;
+  return newData[table].item;
 };
 
 // delete item using id
@@ -102,10 +102,12 @@ const deleteItem = async (table, id) => {
   }
   let tableItemData = tableData.item;
   const newData = tableItemData.filter((item) => item.id !== id);
-  return await localForage.setItem(DATABASE, {
+   await localForage.setItem(DATABASE, {
     ...database,
     [table]: { ...tableData, item: [...newData] },
   });
+
+  return newData
 };
 // 0553786281
 // find a single Item in the items arr
@@ -126,6 +128,36 @@ const updateItem = async (table, id, data) => {
 
   
 };
+
+const getAllItems = async (table)=>{
+  const database =
+  (await localForage.getItem(DATABASE)) ||
+  (await localForage.setItem(DATABASE, {}));
+
+  const tableData = database[table];
+
+  if(tableData){
+    return tableData.item
+  }
+  return false
+}
+const deleteAll = async(table)=>{
+  const database =
+  (await localForage.getItem(DATABASE)) ||
+  (await localForage.setItem(DATABASE, {}));
+
+  const tableData = database[table];
+  if (!tableData) {
+    return false;
+  }
+  tableData.item = []
+  
+  const newData = await localForage.setItem(DATABASE, {
+    ...database,
+    [table]: { ...tableData, item: [] },
+  });
+  return newData[table].item
+}
 export {
   createTable,
   deleteTable,
@@ -135,7 +167,9 @@ export {
   deleteItem,
   findItem,
   updateItem,
-  getTables
+  getTables,
+  deleteAll,
+  getAllItems
 };
 
 /* 
