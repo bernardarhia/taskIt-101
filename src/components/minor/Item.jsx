@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { AiOutlineFire } from "react-icons/ai";
 import { FiCalendar, FiTrash } from "react-icons/fi";
 import { Theme } from "../../context/ThemeContext";
@@ -7,7 +7,7 @@ import Input from "../major/Input";
 const Item = ({ item, table, setAllItems }) => {
   const { theme } = useContext(Theme);
 
-  const deleteTask = async (id) => {
+const deleteTask = async (id) => {
     const deleted = await deleteItem(table, id);
     setAllItems([...deleted]);
   };
