@@ -101,7 +101,6 @@ input {
   position: relative;
 }
 .sidebar .lists .icon a .count-trash {
-  padding: 0.2rem;
   position: absolute;
   width: 20px;
   height: 20px;
@@ -141,6 +140,13 @@ input {
   }
   .sidebar .lists .icon a {
     padding: 1rem;
+    font-size: 1.4rem;
+  }
+  .sidebar .lists .icon a .count-trash {
+    width: 18px;
+    height: 18px;
+    right: 25px;
+    bottom: 33px;
   }
   .sidebar .icons {
     padding: 0.5rem;

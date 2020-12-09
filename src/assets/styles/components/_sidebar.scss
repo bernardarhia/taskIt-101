@@ -27,7 +27,6 @@
                 font-weight: bold;
                 position: relative;
                 .count-trash{
-                    padding: .2rem;
                    position:absolute;
                    width: 20px;
                    height: 20px;
@@ -69,6 +68,14 @@
                 position: absolute;
                 a{
                    padding: 1rem;
+                   font-size: 1.4rem;
+                   .count-trash{
+                       width: 18px;
+                       height: 18px;
+                    right:25px;
+                    bottom:33px;
+                   
+                 }
                 }
             }
         }
