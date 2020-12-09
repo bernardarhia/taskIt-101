@@ -95,9 +95,28 @@ input {
 .sidebar .lists .icon a {
   display: block;
   margin: 1rem 0;
-  font-size: 1.2rem;
+  font-size: 1.9rem;
   color: #333;
   font-weight: bold;
+  position: relative;
+}
+.sidebar .lists .icon a .count-trash {
+  padding: 0.2rem;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 5px;
+  bottom: 20px;
+  background: red;
+  border-radius: 50%;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  animation: beep 1s ease-out infinite;
+  transform: translate3d(12px, 15px, 0);
+  transition: 0.3s ease-in;
+  visibility: hidden;
 }
 .sidebar .icons {
   padding: 0.5rem;
@@ -128,6 +147,24 @@ input {
     cursor: pointer;
     display: flex;
     justify-content: flex-end;
+  }
+}
+@keyframes beep {
+  25% {
+    visibility: visible;
+    background: #ff3333;
+  }
+  50% {
+    visibility: visible;
+    background: #ff4747;
+  }
+  75% {
+    visibility: visible;
+    background: #ff5757;
+  }
+  100% {
+    visibility: visible;
+    background: #f7c7c7;
   }
 }
 .main-content {

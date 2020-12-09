@@ -7,7 +7,7 @@ import { TaskListContext } from "../context/TaskContext";
 import MainContent from "../components/major/MainContent";
 import { fetchTrashTables } from "../utils/trash";
 const Trash = () => {
-  const { trashItems, setTrashItems } = useContext(TaskListContext);
+  const { trashItems, setTrashItems, setCountTrash} = useContext(TaskListContext);
 
   useEffect(() => {
     async function allTrash() {
@@ -16,6 +16,10 @@ const Trash = () => {
     }
     allTrash();
   }, [trashItems, setTrashItems]);
+
+  useEffect(() => {
+    setTimeout(()=>setCountTrash(0),1000)
+  },[setCountTrash])
   return (
     <Layout>
       <Sidebar />

@@ -8,10 +8,11 @@ const TaskContextProvider = ({ children }) => {
   const [AllItems, setAllItems] = useState([])
   const [trashItems, setTrashItems] = useState([])
   const [tasksTitles, setTaskTitles] = useState([])
+  const [countTrash, setCountTrash] = useState(0)
  
   return (
     <TaskListContext.Provider
-      value={{  showInput, setShowInput, setAllItems, AllItems,tasksTitles, setTaskTitles,trashItems, setTrashItems}}
+      value={{  showInput, setShowInput, setAllItems, AllItems,tasksTitles, setTaskTitles,trashItems, setTrashItems,countTrash, setCountTrash}}
     >
       {children}
     </TaskListContext.Provider>

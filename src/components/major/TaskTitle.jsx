@@ -1,15 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { FiEye, FiMoreHorizontal, FiEdit2, FiTrash } from "react-icons/fi";
-import { findTable, deleteTable, addOne, createTable } from "../../utils/query";
-import { addOneToTrash, fetchFromTrash,removeFromTrash } from "../../utils/trash";
+import { findTable, deleteTable, createTable } from "../../utils/query";
+import {
+  addOneToTrash,
+  fetchFromTrash,
+  removeFromTrash,
+} from "../../utils/trash";
 
 import DisplayTags from "../minor/DisplayTags";
 import { Theme } from "../../context/ThemeContext";
 import { TaskListContext } from "../../context/TaskContext";
 const TaskTitle = ({ title, setTaskTitles, isInTrash }) => {
   const { theme } = useContext(Theme);
-  const { trashItems, setTrashItems } = useContext(TaskListContext);
+  const { countTrash, setCountTrash } = useContext(
+    TaskListContext
+  );
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [tags, setTags] = useState([]);
@@ -24,38 +30,38 @@ const TaskTitle = ({ title, setTaskTitles, isInTrash }) => {
       }
     };
     getTags();
+
   }, [title, tags]);
 
   const handleDelete = async (title) => {
     const response = await findTable(title);
-    console.log(response);
     await addOneToTrash(title, response);
     const result = await deleteTable(title);
     setTaskTitles([...result]);
     setShowDropdown(false);
+    setCountTrash(countTrash + 1);
+    setShowDropdown(!showDropdown);
   };
 
-
-  const  handleRestore = async (table)=>{
+  const handleRestore = async (table) => {
     // const
     // pull data from trash
-    const fetchTrashItem = await fetchFromTrash(table)
-    const title = Object.keys(fetchTrashItem).toString()
-    const data = fetchTrashItem[table]
-
+    const fetchTrashItem = await fetchFromTrash(table);
+    const title = Object.keys(fetchTrashItem).toString();
+    const data = fetchTrashItem[table];
+    setShowDropdown(!showDropdown);
     // insert into taskIT
-    const response = await createTable(title.trim(), {
+await createTable(title.trim(), {
       ...data,
     });
-    console.log(response);
-   
-  }
 
-  const handleRemove = async function(table){
-    console.log(table);
-    const removed = await removeFromTrash(table)
-    console.log(removed);
-  }
+  };
+
+  const handleRemove = async function (table) {
+    await removeFromTrash(table);
+    setShowDropdown(!showDropdown);
+
+  };
   return (
     <div
       className="task-title"
@@ -99,14 +105,12 @@ const TaskTitle = ({ title, setTaskTitles, isInTrash }) => {
                 </span>
                 <span className="text">Restore</span>
               </Link>
-            ) : (
-             null
-            )}
+            ) : null}
 
             {isInTrash ? (
               <Link
                 to="#"
-                onClick={() =>handleRemove(title)}
+                onClick={() => handleRemove(title)}
                 style={{ color: theme === "light" ? "#222" : "#fff" }}
               >
                 <span className="icon">
