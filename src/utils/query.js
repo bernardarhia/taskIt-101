@@ -8,7 +8,7 @@ async function createDb() {
 createDb();
 
 // create a table
-const createTable = async (table) => {
+const createTable = async (table, data={}) => {
   const database =
     (await localForage.getItem(DATABASE)) ||
     (await localForage.setItem(DATABASE, {}));
@@ -16,7 +16,7 @@ const createTable = async (table) => {
   if (table === "") throw new Error("Please provide a table name");
   const createdTable = await localForage.setItem(DATABASE, {
     ...database,
-    [table]: {},
+    [table]: {...data},
   });
   if (createdTable) return true;
   return;
@@ -58,7 +58,6 @@ const addOne = async (table, data) => {
     (await localForage.getItem(DATABASE)) ||
     (await localForage.setItem(DATABASE, {}));
 
-    if(!table)return
   if (!data) return "Can't send an empty data";
   if (typeof data !== "object" || Array.isArray(data)) {
     return false;

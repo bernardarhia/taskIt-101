@@ -18,12 +18,48 @@ async function createDb() {
     }
     const newData = await localForage.setItem(DATABASE, {
       ...database,
-      [table]: {item: [{...data}] },
+      [table]: data,
     });
   
     return Object.keys(newData)
   };  
 
 
+  const fetchTrashTables = async()=>{
+    const database =
+    (await localForage.getItem(DATABASE)) ||
+    (await localForage.setItem(DATABASE, {}));
 
-  export {addOneToTrash}
+    return database
+  }
+
+
+  const fetchFromTrash = async table =>{
+    const database =(await localForage.getItem(DATABASE)) ||
+    (await localForage.setItem(DATABASE, {}));
+
+    const findTable = database[table];
+
+    delete database[table]
+    const newData = await localForage.setItem(DATABASE, {
+      ...database,
+    });
+
+    return {[table]:findTable};
+  }
+
+
+  const removeFromTrash = async (table) =>{
+    const database =(await localForage.getItem(DATABASE)) ||
+    (await localForage.setItem(DATABASE, {}));
+
+    const findTable = database[table];
+
+    delete database[table]
+    const newData = await localForage.setItem(DATABASE, {
+      ...database,
+    });
+
+    return newData;
+  }
+  export {addOneToTrash,fetchTrashTables, fetchFromTrash,removeFromTrash}

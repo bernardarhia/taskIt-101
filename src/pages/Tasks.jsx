@@ -23,6 +23,7 @@ const Tasks = ({ match }) => {
     const getAll = async () => {
       const response = await getAllItems(table);
       response && setAllItems([...response]);
+      console.log(response);
     };
     getAll();
   }, [setAllItems, match.params.name]);
