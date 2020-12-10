@@ -28,7 +28,7 @@ const {setAllItems,AllItems} = useContext(TaskListContext)
   });
   const handleItemSubmit = async () => {
 
-    if(!date || !duration || !itemTitle || !priority){
+    if(!date || !duration || !itemTitle || !priority || priority.toLowerCase()==='priority'){
         setError('Fill all inputs form')
         return;
     }

@@ -139,7 +139,7 @@ input {
     position: absolute;
   }
   .sidebar .lists .icon a {
-    padding: 1rem;
+    padding: 1rem 0.8rem;
     font-size: 1.4rem;
   }
   .sidebar .lists .icon a .count-trash {
@@ -481,12 +481,22 @@ input {
   margin-top: 0.09rem;
   margin-right: 0.4rem;
 }
-.task-lists .list .stage {
+.task-lists .list .c-10 {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  align-items: center;
+}
+.task-lists .list .c-10 .time {
+  margin-right: 1rem;
+  align-self: center;
+}
+.task-lists .list .c-10 .stage {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-.task-lists .list .stage button {
+.task-lists .list .c-10 .stage button {
   display: block;
   padding: 0.5rem 1rem;
   border: none;
@@ -495,6 +505,36 @@ input {
   margin-right: 0.4rem;
 }
 
+@media (max-width: 768px) {
+  .task-lists .list {
+    display: block;
+  }
+  .task-lists .list .title-info {
+    padding-bottom: 1.2rem;
+  }
+  .task-lists .list .priority, .task-lists .list .time {
+    display: flex;
+  }
+  .task-lists .list .c-10 {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    padding-top: 1rem;
+    align-items: center;
+  }
+  .task-lists .list .c-10 .time {
+    margin-bottom: -10px;
+  }
+}
+@media (max-width: 400px) {
+  .task-lists .list .c-10 {
+    display: block;
+  }
+  .task-lists .list .c-10 .time {
+    margin: 0;
+    padding-bottom: 1rem;
+  }
+}
 .item-form__container {
   position: fixed;
   top: 0;
@@ -540,6 +580,12 @@ input {
 }
 .item-form__container .item-form .priority {
   width: 100%;
+}
+
+@media (max-width: 520px) {
+  .item-form__container .item-form {
+    width: 96%;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

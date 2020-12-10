@@ -67,7 +67,7 @@ await createTable(title.trim(), {
       className="task-title"
       style={{
         backgroundColor: theme === "light" ? "#fff" : "#2c2c2c",
-        boxShadow: theme === "dark" ? "none" : "0 0 15px #c8c8c84a",
+        boxShadow: theme === "dark" ? "none" : "0 0 15px #c8c8c88c",
       }}
     >
       <div className="title-content">

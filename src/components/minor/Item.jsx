@@ -66,6 +66,7 @@ const deleteTask = async (id) => {
           {item && item.priority}
         </div>
       </div>
+      <div className="c-10">
       <div className="time">
         <div className="title">
           <span>
@@ -88,6 +89,7 @@ const deleteTask = async (id) => {
         {item && item.isCompleted && (
           <FiTrash onClick={() => deleteTask(item.id)} />
         )}
+      </div>
       </div>
     </div>
   );
